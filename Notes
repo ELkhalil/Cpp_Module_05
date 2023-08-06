@@ -1,0 +1,89 @@
+        ****    Exception Handling in C++   ****
+
+**Exception:
+--> Indicate Errors that occur during a program's execution
+--> A C++ Exception is a response to an exceptional circumstance that aries
+    while a program is runing, such as an attemt to (Devide by zero)
+
+**Exception Handling:
+--> Can resolve exceptions:
+    - allow a program to continue executing or notify the user of the problem so it can be used or 
+    terminate the program in a cleaner manner.
+
+WHAT is really an Exception is? 
+-> is a class  usually derived from one of the system's exceptions base class.
+
+Exception Class is the standard C++ base class for all exceptions.
+it provide the derived classes with a virtual function called what()
+    witch Returns the exceptions's stored error message
+
+if an exceptional or error situation occurs, program throws an object of that class
+
+--> Exceptions provide a way to transform controle from one part of a program to another.
+    - we already know that the program execute line by line so at the line of the error we want to 
+     change the line and send the next execution to another one...
+
+/*
+        1-try (Block):
+            -> identifies a block of code for wich particular exceptions will be activated.
+        2- Throw:
+            -> a program thows an exception when a problem shows up. this is done using a throw keywoard.
+        3- catch ( Block ):
+            -> a program catch with an exception handler at the place in a program where you want to handle 
+            the problem.
+*/
+
+throw -> is responsible for sending the execution to the exception line.
+the idea is to not let the program crash...
+
+--------------------------------------------------------------------------------------------------------------------
+** Some Informations from StackOverflow
+There are runtime Builtin exceptions:
+---> But not everything that's "wrong" results in a runtime exception being thrown
+    for example:
+        - acccessing an array out of bounds or dereferencing a null pointer is simply "undefined behaviour"
+          meaning anything at all can happen. Division by zero also falls into the "undefined" category.
+
+The rationale for some operations resulting in "undefined behaviour" rather than an exception is efficiency. Suppose an out-of-bounds array access required an exception to be thrown. Then the compiler would have to generate code for each array access to checks whether it's out of bounds, and if so, throw an exception. That's a lot of checking, most of which is unnecessary. Instead, what compilers do is just generate the instruction for the element access assuming it is within bounds. If it happens to be out of bounds, then whatever happens (e.g. segmentation fault) happens. If you want a check to be performed, you can always code it explicitly.
+--------------------------------------------------------------------------------------------------------------------
+
+This makes C++ more powerful than languages that always do checks (e.g. Java or python) because you can choose when you want a check done, and when you don't. (On the other hand, it makes C++ less safe than Java or python. It's a trade-off).
+
+-> As for what happens when an exception is thrown but not caught anywhere ??
+typically compiler implementations will print an error message containing the exception's what().
+
+Phases of Handling an Exception (Source = ChatGPT):
+
+1 - Throwing an Exception:
+When a problem or exceptional situation occurs in the code, you can explicitly throw an exception using the throw keyword. For example:
+void someFunction() {
+    if (someConditionIsTrue) {
+        throw SomeExceptionType("An error occurred!");
+    }
+}
+
+2 - Propagation:
+Once an exception is thrown, the C++ runtime looks for an appropriate exception handler in the call stack. The call stack is a data structure that tracks the sequence of function calls made during the program's execution.
+
+3 - Unwinding the Stack:
+The C++ runtime starts unwinding the call stack, searching for a matching exception handler. It looks at the functions on the call stack, one by one, to see if any of them have an appropriate exception handler to catch the thrown exception. If no suitable handler is found in the current function, it moves to the calling function and so on, until it either finds a matching handler or reaches the top of the call stack.
+
+4 - Catching the Exception:
+If a matching exception handler is found, the control flow is transferred to that handler, and the appropriate code within the handler is executed. The handler can perform error recovery, logging, or any other necessary actions.
+try {
+    someFunction();
+} catch (const SomeExceptionType& ex) {
+    // Exception handling code
+}
+
+5 - If No Handler is Found:
+If the exception is not caught by any handler during the unwinding process, the program will terminate abruptly. By default, this will lead to the std::terminate function being called, which usually terminates the program and may display an error message.
+
+6 - Nested Exception Handling:
+C++ allows for nested exception handling. If an exception is thrown while handling another exception, the second exception takes precedence, and the handling for the first exception is paused while the second one is processed.
+
+!!! Remember that using exceptions should be done judiciously, and they are typically used to handle exceptional situations, not regular control flow. Overusing exceptions or using them for normal program flow can lead to code that is harder to understand and maintain.
+
+To create A custom Exception handling we need:
+1-> Inherite The Exception Class.
+2-> Override the what() func.
