@@ -87,3 +87,13 @@ C++ allows for nested exception handling. If an exception is thrown while handli
 To create A custom Exception handling we need:
 1-> Inherite The Exception Class.
 2-> Override the what() func.
+
+syntax = virtual const char* what() const throw()
+{
+    return "Message";
+}
+virtual     = overriden in the derived class.
+const char* = return a modifiable pointer to constant array of chars
+what()      = print the error message
+const       = represent that this func do not change the object members
+throw()     = exception specification -> what() is not going to throw any kind of exception
