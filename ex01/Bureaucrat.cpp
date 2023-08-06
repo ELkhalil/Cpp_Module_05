@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 18:45:45 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/06 13:12:08 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/06 16:11:48 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,16 @@ void    Bureaucrat::decrementGrade( void )
         throw Bureaucrat::GradeTooLowException();
     else
         this->_grade ++;
+}
+
+// Nested Class Implementations
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+    return ("Grade Too High");
+}
+const char* Bureaucrat::GradeTooLowException::what() const throw()
+{
+    return ("Grade Too Low");
 }
 
 // Output Stream Overload

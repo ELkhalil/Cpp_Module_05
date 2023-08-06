@@ -96,4 +96,8 @@ virtual     = overriden in the derived class.
 const char* = return a modifiable pointer to constant array of chars
 what()      = print the error message
 const       = represent that this func do not change the object members
-throw()     = exception specification -> what() is not going to throw any kind of exception
+throw()     = exception specification -> what() is not going to throw any kind of exception.
+
+Note: Just because we have exceptions does not mean we do not use error codes as well. When error can be handled locally use error codes.
+When errors require more context for correction use exceptions
+
