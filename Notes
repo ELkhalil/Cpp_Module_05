@@ -100,4 +100,3 @@ throw()     = exception specification -> what() is not going to throw any kind o
 
 Note: Just because we have exceptions does not mean we do not use error codes as well. When error can be handled locally use error codes.
 When errors require more context for correction use exceptions
-

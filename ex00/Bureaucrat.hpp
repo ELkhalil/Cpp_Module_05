@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 18:31:06 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/06 16:16:34 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/06 18:58:20 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ public:
 private:
     Bureaucrat          ( void );
     const std::string   _name;
-    int                 _grade; // from 1 (Highest Grade) to 150 (Lowest Grade)
+    int                 _grade;
 };
 
 std::ostream& operator<<(std::ostream& out, Bureaucrat const& other);
