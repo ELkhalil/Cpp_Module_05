@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 18:31:06 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/06 18:58:20 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/07 11:02:20 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 class Bureaucrat
 {
 public:
+    Bureaucrat          ( void );
     Bureaucrat          (std::string const& name, int grade);
     Bureaucrat          (Bureaucrat const& other);
     Bureaucrat&         operator=(Bureaucrat const& other);
@@ -41,7 +42,6 @@ public:
     };
 
 private:
-    Bureaucrat          ( void );
     const std::string   _name;
     int                 _grade;
 };

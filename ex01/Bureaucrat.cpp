@@ -6,16 +6,19 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 18:45:45 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/06 16:11:48 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/07 12:40:08 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 // Bureaucrat Constructors
-Bureaucrat::Bureaucrat  ( void )
+Bureaucrat::Bureaucrat  ( void ) : _name("DefaultBureaucrat"), _grade(10)
 {
     std::cout << "Bureaucrat Default Constructor" << std::endl;
+    std::cout << "A Default Bureaucrat Created Successfully" << std::endl;
+    std::cout << "Checking Status..." << std::endl;
+    std::cout << "Name: " << this->_name << "Grade: " << this->_grade << std::endl;
 }
 
 Bureaucrat::Bureaucrat  ( std::string const& name, int grade ) : _name(name)
@@ -82,16 +85,33 @@ void    Bureaucrat::decrementGrade( void )
 // Nested Class Implementations
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-    return ("Grade Too High");
+    return ("Exception: Grade Too High");
 }
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-    return ("Grade Too Low");
+    return ("Exception: Grade Too Low");
 }
 
 // Output Stream Overload
 std::ostream& operator<< (std::ostream &out, Bureaucrat const &other)
 {
+    out << "Bureaucrat " << other.getName() << " Inofrmations..." << std::endl;
     out << other.getName() <<  ", bureaucrat grade " << other.getGrade() << std::endl;
     return out;
+}
+
+// Bureaucrat InterAction Methods with the Form
+void    Bureaucrat::signForm(Form& form)
+{
+    try
+    {
+        form.beSigned(*this);
+        if (form.isSigned())
+            std::cout << this->_name << " signed " << form.getName() << std::endl;
+    }
+    catch (Form::GradeTooLowException e)
+    {
+        std::cout << this->_name << " couldn’t sign " << form.getName() << "because ";
+        std::cout << e.what() << std::endl;
+    }
 }

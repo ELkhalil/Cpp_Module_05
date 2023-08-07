@@ -6,12 +6,12 @@
 #    By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/05 17:53:43 by aelkhali          #+#    #+#              #
-#    Updated: 2023/08/05 19:26:57 by aelkhali         ###   ########.fr        #
+#    Updated: 2023/08/07 12:19:55 by aelkhali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Output Program Name
-NAME = bureaucrat
+NAME = FormUpMaggots
 
 # Colors :
 GREEN = \033[0;32m
@@ -26,7 +26,7 @@ FLAGS =	-Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
 # loading source files :
-SRCS = main.cpp Bureaucrat.cpp
+SRCS = main.cpp Bureaucrat.cpp Form.cpp
 
 all : $(NAME)
 	@echo "You Can Use $(GREEN)*** $(NAME) ***$(STOP)"

@@ -6,16 +6,19 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 18:45:45 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/06 16:11:48 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/07 12:06:03 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 // Bureaucrat Constructors
-Bureaucrat::Bureaucrat  ( void )
+Bureaucrat::Bureaucrat  ( void ) : _name("Default"), _grade(10)
 {
     std::cout << "Bureaucrat Default Constructor" << std::endl;
+    std::cout << "A Default Bureaucrat Created Successfully" << std::endl;
+    std::cout << "Checking Status..." << std::endl;
+    std::cout << "Name: " << this->_name << "Grade: " << this->_grade << std::endl;
 }
 
 Bureaucrat::Bureaucrat  ( std::string const& name, int grade ) : _name(name)
@@ -29,10 +32,9 @@ Bureaucrat::Bureaucrat  ( std::string const& name, int grade ) : _name(name)
         this->_grade = grade;
 }
 
-Bureaucrat::Bureaucrat  ( Bureaucrat const& other )
+Bureaucrat::Bureaucrat  ( Bureaucrat const& other ) : _name(other._name), _grade(other._grade)
 {
     std::cout << "Bureaucrat Copy Constructor" << std::endl;
-    (*this) = other;
 }
 
 Bureaucrat::~Bureaucrat  ( void )
@@ -45,10 +47,7 @@ Bureaucrat& Bureaucrat::operator=( Bureaucrat const& other )
 {
     std::cout << "Bureaucrat Copy Assignement Operators" << std::endl;
     if (this != &other)
-    {
-        (std::string)this->_name = other.getName();
-        this->_grade = other.getGrade();
-    }
+        *this = Bureaucrat(other);
     return (*this);
 }
 

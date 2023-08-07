@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 19:24:12 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/06 17:37:41 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/07 12:06:23 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,17 @@ void    testingConstuction ( void )
     }
     catch(Bureaucrat::GradeTooHighException e)
     {
+        std::cerr << "Exception: ";
         std::cerr << e.what() << std::endl;
     }
     catch(Bureaucrat::GradeTooLowException e)
     {
+        std::cerr << "Exception: ";
         std::cerr << e.what() << std::endl;
+    }
+    catch(...)
+    {
+        std::cerr << "Exception: SomeThing Else" << std::endl;
     }
 }
 
@@ -47,6 +53,10 @@ void    testingHighGradeIncrementations( void )
     {
         std::cerr << e.what() << std::endl;
     }
+    catch(...)
+    {
+        std::cerr << "Exception: SomeThing Else" << std::endl;
+    }
 }
 
 void    testingLowGradeIncrementations( void )
@@ -66,6 +76,10 @@ void    testingLowGradeIncrementations( void )
     catch(Bureaucrat::GradeTooLowException e)
     {
         std::cerr << e.what() << std::endl;
+    }
+    catch(...)
+    {
+        std::cerr << "Exception: SomeThing Else" << std::endl;
     }
 }
 
