@@ -1,53 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/06 17:44:14 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/07 19:06:50 by aelkhali         ###   ########.fr       */
+/*   Created: 2023/08/07 19:49:52 by aelkhali          #+#    #+#             */
+/*   Updated: 2023/08/07 22:54:12 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-// Form Constructors
-Form::Form  ( void ) : _name("DefaultForm"), _gradeToSigne(10), _gradeToExecute(10), _isSigned(false)
+// AForm Constructors
+AForm::AForm  ( void ) : _name("DefaultAForm"), _gradeToSigne(10), _gradeToExecute(10), _isSigned(false)
 {
-    std::cout << "Form Default Constructor" << std::endl;
-    std::cout << "A Default Form Created Successfully" << std::endl;
-    std::cout << "Checking Form Infos..." << std::endl;
+    std::cout << "AForm Default Constructor" << std::endl;
+    std::cout << "A Default AForm Created Successfully" << std::endl;
+    std::cout << "Checking AForm Infos..." << std::endl;
     std::cout << "isSigned : " << this->_isSigned;
     std::cout << "gradeToSignee : " << this->_gradeToSigne;
     std::cout << "gradeToExecute : " << this->_gradeToExecute;
 }
 
-Form::Form    ( std::string const& name, const int gToSigne, const int gToExecute )
+AForm::AForm    ( std::string const& name, const int gToSigne, const int gToExecute )
     : _name(name), _gradeToSigne(gToSigne), _gradeToExecute(gToExecute), _isSigned(false)
 {
-    std::cout << "Form Parametrized Constructor" << std::endl;
+    std::cout << "AForm Parametrized Constructor" << std::endl;
     if (_gradeToSigne < 1 || _gradeToExecute < 1)
-        throw(Form::GradeTooHighException());
+        throw(AForm::GradeTooHighException());
     else if (_gradeToSigne > 150 || _gradeToExecute > 150)
-        throw(Form::GradeTooLowException());
+        throw(AForm::GradeTooLowException());
 }
 
-Form::Form    ( Form const& other ) 
+AForm::AForm    ( AForm const& other ) 
     : _name(other._name), _gradeToSigne(other._gradeToSigne), _gradeToExecute(other._gradeToExecute), _isSigned(false)
 {
-    std::cout << "Form Copy Constructor" << std::endl;
+    std::cout << "AForm Copy Constructor" << std::endl;
 }
 
-Form::~Form     ( void )
+AForm::~AForm     ( void )
 {
-    std::cout << "Form Destructor" << std::endl;
+    std::cout << "AForm Destructor" << std::endl;
 }
 
-// Form Copy Assignement Operator
-Form&   Form::operator=( Form const& other )
+// AForm Copy Assignement Operator
+AForm&   AForm::operator=( AForm const& other )
 {
-    std::cout << "Form Copy Assignement Operator" << std::endl;
+    std::cout << "AForm Copy Assignement Operator" << std::endl;
     if (this != &other)
     {
         this->_isSigned = other.isSigned();
@@ -55,24 +55,29 @@ Form&   Form::operator=( Form const& other )
     return *this;
 }
 
-// Form Getter Methods
-const std::string&  Form::getName( void ) const { return this->_name; }
-bool                Form::isSigned( void ) const { return this->_isSigned; }
-int           Form::getGradeToSigne( void ) const { return this->_gradeToSigne; }
-int           Form::getGradeToExecute( void ) const { return this->_gradeToExecute; }
+// AForm Getter Methods
+const std::string&  AForm::getName( void ) const { return this->_name; }
+bool                AForm::isSigned( void ) const { return this->_isSigned; }
+int           AForm::getGradeToSigne( void ) const { return this->_gradeToSigne; }
+int           AForm::getGradeToExecute( void ) const { return this->_gradeToExecute; }
 
-// Form Exception Ovveride
-const char* Form::GradeTooHighException::what() const throw()
+// AForm Exception Ovveride
+const char* AForm::GradeTooHighException::what() const throw()
 {
     return ("Grade Too High");
 }
-const char* Form::GradeTooLowException::what() const throw()
+const char* AForm::GradeTooLowException::what() const throw()
 {
     return ("Grade Too Low");
 }
 
+const char* AForm::FormNotSigned::what() const throw()
+{
+    return ("Form Not Signed");
+}
+
 // Overloading the insertion Operator
-std::ostream& operator<<(std::ostream& out, Form const& form)
+std::ostream& operator<<(std::ostream& out, AForm const& form)
 {
     out << "*** Form Informations ***" << std::endl;
     out << "Form Name: " << form.getName() << std::endl;
@@ -87,10 +92,10 @@ std::ostream& operator<<(std::ostream& out, Form const& form)
 }
 
 // Form Link to Bureaucrat
-void    Form::beSigned( Bureaucrat const& bureaucrat)
+void    AForm::beSigned( Bureaucrat const& bureaucrat)
 {
     if (bureaucrat.getGrade() > _gradeToSigne)
-        throw(Form::GradeTooLowException());
+        throw(AForm::GradeTooLowException());
     else
         this->_isSigned = true;
 }

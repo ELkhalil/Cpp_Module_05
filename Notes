@@ -100,3 +100,57 @@ throw()     = exception specification -> what() is not going to throw any kind o
 
 Note: Just because we have exceptions does not mean we do not use error codes as well. When error can be handled locally use error codes.
 When errors require more context for correction use exceptions
+
+
+Sure, I'll try to explain the steps you need to take to complete the exercise without providing any code.
+
+Step 1: Abstract Class AForm (Base Class)
+
+You correctly identified that you need to create an abstract class called AForm, which will act as the base class 
+for the three concrete form classes: ShrubberyCreationForm, RobotomyRequestForm, and PresidentialPardonForm. 
+This class should have a pure virtual function execute(Bureaucrat const & executor) const, 
+which means it has no implementation in the base class but must be overridden in the derived classes.
+
+Step 2: Concrete Form Classes
+You need to create three concrete classes that inherit from the AForm abstract class: 
+ShrubberyCreationForm, RobotomyRequestForm, and PresidentialPardonForm. Each of these concrete classes should 
+implement the execute function based on its specific behavior, as described in the exercise.
+
+For example:
+
+ShrubberyCreationForm's execute function should create a file "<target>_shrubbery" in the working directory 
+and write ASCII trees inside it.
+RobotomyRequestForm's execute function should make some drilling noises and then inform whether the target 
+has been robotomized successfully 50% of the time or if the robotomy failed.
+PresidentialPardonForm's execute function should inform that the target has been pardoned by Zaphod Beeblebrox.
+
+Step 3: Constructors for Concrete Form Classes
+Each of the concrete form classes should have a constructor that takes a std::string parameter 
+(the target of the form). Inside the constructor, you should pass the target and the required grades 
+for signing and executing the form to the base class AForm using the appropriate constructor of AForm.
+
+For example:
+
+In ShrubberyCreationForm's constructor, you would call AForm(target, 145, 137) to pass the target and 
+the required grades for signing and executing the ShrubberyCreationForm.
+Similarly, for RobotomyRequestForm and PresidentialPardonForm, you would call the respective constructors 
+of AForm with the correct target and required grades.
+
+Step 4: Execute Function in Base Class AForm
+The execute function in the base class AForm is declared as a pure virtual function, which means it has 
+no implementation in the base class. This function will be implemented in each of the concrete form classes 
+to define their specific behavior when executed.
+
+Step 5: Bureaucrat Class
+The exercise also mentions that you should have a Bureaucrat class. You need to implement 
+the executeForm(Form const & form) member function in the Bureaucrat class. This function should attempt to execute
+the given form. If successful, it should print a message like "<bureaucrat> executed <form>". If not, 
+ it should print an explicit error message.
+
+Step 6: Tests
+Finally, you should write tests to ensure that everything works as expected. These tests should create 
+instances of the different forms and bureaucrats and execute the forms with various bureaucrats to check 
+if the requirements are being met and if the exception handling is working correctly.
+
+I hope this explanation clarifies the steps you need to take to complete the exercise. 
+If you have any further questions or need more clarification, feel free to ask!

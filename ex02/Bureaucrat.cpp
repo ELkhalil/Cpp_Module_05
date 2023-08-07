@@ -6,14 +6,14 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 18:45:45 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/07 19:54:54 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/07 22:50:24 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 // Bureaucrat Constructors
-Bureaucrat::Bureaucrat  ( void ) : _name("Default"), _grade(10)
+Bureaucrat::Bureaucrat  ( void ) : _name("DefaultBureaucrat"), _grade(10)
 {
     std::cout << "Bureaucrat Default Constructor" << std::endl;
     std::cout << "A Default Bureaucrat Created Successfully" << std::endl;
@@ -32,9 +32,10 @@ Bureaucrat::Bureaucrat  ( std::string const& name, int grade ) : _name(name)
         this->_grade = grade;
 }
 
-Bureaucrat::Bureaucrat  ( Bureaucrat const& other ) : _name(other._name), _grade(other._grade)
+Bureaucrat::Bureaucrat  ( Bureaucrat const& other )
 {
     std::cout << "Bureaucrat Copy Constructor" << std::endl;
+    (*this) = other;
 }
 
 Bureaucrat::~Bureaucrat  ( void )
@@ -48,6 +49,7 @@ Bureaucrat& Bureaucrat::operator=( Bureaucrat const& other )
     std::cout << "Bureaucrat Copy Assignement Operators" << std::endl;
     if (this != &other)
     {
+        (std::string)this->_name = other.getName();
         this->_grade = other.getGrade();
     }
     return (*this);
@@ -83,16 +85,45 @@ void    Bureaucrat::decrementGrade( void )
 // Nested Class Implementations
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-    return ("Grade Too High");
+    return ("Exception: Grade Too High");
 }
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-    return ("Grade Too Low");
+    return ("Exception: Grade Too Low");
 }
 
 // Output Stream Overload
 std::ostream& operator<< (std::ostream &out, Bureaucrat const &other)
 {
+    out << "Bureaucrat " << other.getName() << " Inofrmations..." << std::endl;
     out << other.getName() <<  ", bureaucrat grade " << other.getGrade() << std::endl;
     return out;
+}
+
+// Bureaucrat InterAction Methods with the AForm
+void    Bureaucrat::signForm(AForm& form)
+{
+    try
+    {
+        form.beSigned(*this);
+        if (form.isSigned())
+            std::cout << this->_name << " signed " << form.getName() << std::endl;
+    }
+    catch (AForm::GradeTooLowException e)
+    {
+        std::cout << this->_name << " couldn’t sign " << form.getName() << "because ";
+        std::cout << e.what() << std::endl;
+    }
+}
+
+void    executeForm(AForm const& form)
+{
+    try
+    {
+           
+    }
+    catch
+    {
+        
+    }
 }
