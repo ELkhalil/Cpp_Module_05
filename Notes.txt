@@ -63,13 +63,17 @@ void someFunction() {
 }
 
 2 - Propagation:
-Once an exception is thrown, the C++ runtime looks for an appropriate exception handler in the call stack. The call stack is a data structure that tracks the sequence of function calls made during the program's execution.
+Once an exception is thrown, the C++ runtime looks for an appropriate exception handler in the call stack. The call stack is a data structure that tracks 
+the sequence of function calls made during the program's execution.'
 
 3 - Unwinding the Stack:
-The C++ runtime starts unwinding the call stack, searching for a matching exception handler. It looks at the functions on the call stack, one by one, to see if any of them have an appropriate exception handler to catch the thrown exception. If no suitable handler is found in the current function, it moves to the calling function and so on, until it either finds a matching handler or reaches the top of the call stack.
+The C++ runtime starts unwinding the call stack, searching for a matching exception handler. It looks at the functions on the call stack, one by one, 
+to see if any of them have an appropriate exception handler to catch the thrown exception. If no suitable handler is found in the current function, 
+it moves to the calling function and so on, until it either finds a matching handler or reaches the top of the call stack.
 
 4 - Catching the Exception:
-If a matching exception handler is found, the control flow is transferred to that handler, and the appropriate code within the handler is executed. The handler can perform error recovery, logging, or any other necessary actions.
+If a matching exception handler is found, the control flow is transferred to that handler, and the appropriate code within the handler is executed. 
+The handler can perform error recovery, logging, or any other necessary actions.
 try {
     someFunction();
 } catch (const SomeExceptionType& ex) {
@@ -101,56 +105,26 @@ throw()     = exception specification -> what() is not going to throw any kind o
 Note: Just because we have exceptions does not mean we do not use error codes as well. When error can be handled locally use error codes.
 When errors require more context for correction use exceptions
 
+When you throw an object in C++, the program starts the process of unwinding the call stack to find an appropriate catch block to handle the thrown exception. 
+Here's what happens when you throw an object:
 
-Sure, I'll try to explain the steps you need to take to complete the exercise without providing any code.
+A new object is created: When you use the throw statement with an object, a new object of the specified type is created. This involves calling the constructor 
+of the exception class to initialize the object.
 
-Step 1: Abstract Class AForm (Base Class)
+Searching for a matching catch block: The program begins searching for a matching catch block in the call stack. It looks for catch blocks in the current 
+function and its caller functions, going up the call hierarchy until it finds a suitable catch block.
 
-You correctly identified that you need to create an abstract class called AForm, which will act as the base class 
-for the three concrete form classes: ShrubberyCreationForm, RobotomyRequestForm, and PresidentialPardonForm. 
-This class should have a pure virtual function execute(Bureaucrat const & executor) const, 
-which means it has no implementation in the base class but must be overridden in the derived classes.
+Stack unwinding: As the program searches for the catch block, it unwinds the call stack. This means that it jumps back through the sequence of function calls, 
+effectively undoing the previous function calls to reach the appropriate catch block.
 
-Step 2: Concrete Form Classes
-You need to create three concrete classes that inherit from the AForm abstract class: 
-ShrubberyCreationForm, RobotomyRequestForm, and PresidentialPardonForm. Each of these concrete classes should 
-implement the execute function based on its specific behavior, as described in the exercise.
+Object destruction: During the stack unwinding process, if any local objects in the call stack have destructors, they will be executed as the program exits 
+the corresponding stack frame.
 
-For example:
+Matching catch block: When a matching catch block is found, the program jumps to that block, and the code inside the catch block is executed. If the catch 
+block doesn't handle the exception, the search continues, moving up the call stack.
 
-ShrubberyCreationForm's execute function should create a file "<target>_shrubbery" in the working directory 
-and write ASCII trees inside it.
-RobotomyRequestForm's execute function should make some drilling noises and then inform whether the target 
-has been robotomized successfully 50% of the time or if the robotomy failed.
-PresidentialPardonForm's execute function should inform that the target has been pardoned by Zaphod Beeblebrox.
+Propagation or termination: If no matching catch block is found in the entire call stack, the program will terminate abnormally, and the C++ runtime will 
+typically print an error message indicating the uncaught exception.
 
-Step 3: Constructors for Concrete Form Classes
-Each of the concrete form classes should have a constructor that takes a std::string parameter 
-(the target of the form). Inside the constructor, you should pass the target and the required grades 
-for signing and executing the form to the base class AForm using the appropriate constructor of AForm.
-
-For example:
-
-In ShrubberyCreationForm's constructor, you would call AForm(target, 145, 137) to pass the target and 
-the required grades for signing and executing the ShrubberyCreationForm.
-Similarly, for RobotomyRequestForm and PresidentialPardonForm, you would call the respective constructors 
-of AForm with the correct target and required grades.
-
-Step 4: Execute Function in Base Class AForm
-The execute function in the base class AForm is declared as a pure virtual function, which means it has 
-no implementation in the base class. This function will be implemented in each of the concrete form classes 
-to define their specific behavior when executed.
-
-Step 5: Bureaucrat Class
-The exercise also mentions that you should have a Bureaucrat class. You need to implement 
-the executeForm(Form const & form) member function in the Bureaucrat class. This function should attempt to execute
-the given form. If successful, it should print a message like "<bureaucrat> executed <form>". If not, 
- it should print an explicit error message.
-
-Step 6: Tests
-Finally, you should write tests to ensure that everything works as expected. These tests should create 
-instances of the different forms and bureaucrats and execute the forms with various bureaucrats to check 
-if the requirements are being met and if the exception handling is working correctly.
-
-I hope this explanation clarifies the steps you need to take to complete the exercise. 
-If you have any further questions or need more clarification, feel free to ask!
+It's important to note that during the unwinding process, the destructors of local objects in each stack frame are called automatically, ensuring that 
+resources are properly cleaned up as the program exits the functions. This process is known as stack unwinding and is a crucial part of C++'s exception handling mechanism.
