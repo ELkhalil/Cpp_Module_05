@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 20:35:33 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/08 10:42:26 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/08 15:50:54 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,28 @@
 // ShrubberyCreationForm Constructors
 ShrubberyCreationForm::ShrubberyCreationForm   ( void )
 {
-    std::cout << "ShrubberyCreationForm Default Constructor" << std::endl;
+    // std::cout << "ShrubberyCreationForm Default Constructor" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm   ( std::string const& target ) : AForm(target, 145, 137), _target(target)
 {
-    std::cout << "ShrubberyCreationForm Parametrized Constructor" << std::endl;
-    
+    // std::cout << "ShrubberyCreationForm Parametrized Constructor" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm   ( ShrubberyCreationForm const& other )
 {
-    std::cout << "ShrubberyCreationForm Copy Constructor" << std::endl;
+    // std::cout << "ShrubberyCreationForm Copy Constructor" << std::endl;
     (*this) = other;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm  ( void )
 {
-    std::cout << "ShrubberyCreationForm Destructor" << std::endl;
+    // std::cout << "ShrubberyCreationForm Destructor" << std::endl;
 }
 
 ShrubberyCreationForm&  ShrubberyCreationForm::operator=( ShrubberyCreationForm const& other )
 {
-    std::cout << "ShrubberyCreationForm Copy Assignement Operator" << std::endl;
+    // std::cout << "ShrubberyCreationForm Copy Assignement Operator" << std::endl;
     if(this != &other)
         this->_target = other._target;
     return (*this);

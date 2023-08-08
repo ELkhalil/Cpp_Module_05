@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 21:53:23 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/08 11:05:39 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/08 15:09:10 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void    testingShrubberyCreationForm ( void )
             bureaucrat.signForm(*form);
             form->execute(bureaucrat);
         }
-        catch(const std::exception& e)
+        catch(std::exception& e)
         {
-            std::cerr << e.what() << '\n';
+            std::cerr << e.what() << std::endl;
         }
         delete form;
     }
@@ -42,9 +42,9 @@ void    testingShrubberyCreationForm ( void )
             bureaucrat.signForm(*form);
             form->execute(bureaucrat);
         }
-        catch(const std::exception& e)
+        catch(std::exception& e)
         {
-            std::cerr << e.what() << '\n';
+            std::cerr << e.what() << std::endl;
         }
         delete form;
     }
@@ -61,9 +61,9 @@ void    testingRobotomyRequestForm ( void )
             bureaucrat.signForm(*form);
             form->execute(bureaucrat);
         }
-        catch(const std::exception& e)
+        catch(std::exception& e)
         {
-            std::cerr << e.what() << '\n';
+            std::cerr << e.what() << std::endl;
         }
         delete form;
     }
@@ -77,9 +77,9 @@ void    testingRobotomyRequestForm ( void )
             bureaucrat.signForm(*form);
             form->execute(bureaucrat);
         }
-        catch(const std::exception& e)
+        catch(std::exception& e)
         {
-            std::cerr << e.what() << '\n';
+            std::cerr << e.what() << std::endl;
         }
         delete form;
     }
@@ -96,9 +96,9 @@ void    testingPresidentialPardonForm ( void )
             bureaucrat.signForm(*form);
             form->execute(bureaucrat);
         }
-        catch(const std::exception& e)
+        catch(std::exception& e)
         {
-            std::cerr << e.what() << '\n';
+            std::cerr << e.what() << std::endl;
         }
         delete form;
     }
@@ -112,9 +112,9 @@ void    testingPresidentialPardonForm ( void )
             bureaucrat.signForm(*form);
             form->execute(bureaucrat);
         }
-        catch(const std::exception& e)
+        catch(std::exception& e)
         {
-            std::cerr << e.what() << '\n';
+            std::cerr << e.what() << std::endl;
         }
         delete form;
     }
@@ -122,8 +122,8 @@ void    testingPresidentialPardonForm ( void )
 
 int main( void )
 {
-    // testingShrubberyCreationForm();
-    // testingRobotomyRequestForm();
-    // testingPresidentialPardonForm();
+    testingShrubberyCreationForm();
+    testingRobotomyRequestForm();
+    testingPresidentialPardonForm();
     return 0;
 }

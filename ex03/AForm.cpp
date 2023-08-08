@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 19:49:52 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/08 10:59:33 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/08 15:49:53 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // AForm Constructors
 AForm::AForm  ( void ) : _name("DefaultAForm"), _gradeToSigne(10), _gradeToExecute(10), _isSigned(false)
 {
-    std::cout << "AForm Default Constructor" << std::endl;
+    // std::cout << "AForm Default Constructor" << std::endl;
     std::cout << "A Default AForm Created Successfully" << std::endl;
     std::cout << "Checking AForm Infos..." << std::endl;
     std::cout << "isSigned : " << this->_isSigned;
@@ -26,7 +26,7 @@ AForm::AForm  ( void ) : _name("DefaultAForm"), _gradeToSigne(10), _gradeToExecu
 AForm::AForm    ( std::string const& name, const int gToSigne, const int gToExecute )
     : _name(name), _gradeToSigne(gToSigne), _gradeToExecute(gToExecute), _isSigned(false)
 {
-    std::cout << "AForm Parametrized Constructor" << std::endl;
+    // std::cout << "AForm Parametrized Constructor" << std::endl;
     if (_gradeToSigne < 1 || _gradeToExecute < 1)
         throw(AForm::GradeTooHighException());
     else if (_gradeToSigne > 150 || _gradeToExecute > 150)
@@ -36,18 +36,18 @@ AForm::AForm    ( std::string const& name, const int gToSigne, const int gToExec
 AForm::AForm    ( AForm const& other ) 
     : _name(other._name), _gradeToSigne(other._gradeToSigne), _gradeToExecute(other._gradeToExecute), _isSigned(false)
 {
-    std::cout << "AForm Copy Constructor" << std::endl;
+    // std::cout << "AForm Copy Constructor" << std::endl;
 }
 
 AForm::~AForm     ( void )
 {
-    std::cout << "AForm Destructor" << std::endl;
+    // std::cout << "AForm Destructor" << std::endl;
 }
 
 // AForm Copy Assignement Operator
 AForm&   AForm::operator=( AForm const& other )
 {
-    std::cout << "AForm Copy Assignement Operator" << std::endl;
+    // std::cout << "AForm Copy Assignement Operator" << std::endl;
     if (this != &other)
     {
         this->_isSigned = other.isSigned();

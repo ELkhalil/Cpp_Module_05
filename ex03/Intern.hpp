@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 11:10:53 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/08 12:08:15 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/08 15:11:11 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ public:
         public:
             const char* what( void ) const throw();
     };
+private:
+    AForm*      _cloneShrubberyCreationForm(std::string const& target);
+    AForm*      _cloneRobotomyRequestForm(std::string const& target);
+    AForm*      _clonePresidentialPardonForm(std::string const& target);
 };
 
 #endif

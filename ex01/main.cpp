@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 19:24:12 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/07 19:43:39 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/08 15:04:18 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,17 @@ void    testingFormExceptions( void )
 {
     try
     {
-        Form    form("Test", -1, 0);
+        Form    form("Test", 1, 500);
     }
-    catch (Form::GradeTooHighException e)
+    catch(std::exception& e)
     {
-        std::cerr << "Exception: ";
-        std::cerr << e.what() << std::endl;
-    }
-    catch (Form::GradeTooLowException e)
-    {
-        std::cerr << "Exception: ";
         std::cerr << e.what() << std::endl;
     }
 }
 
 int main( void )
 {
+    testingFormExceptions();
     std::cout << "-----Construction of Objects-----" << std::endl;
     std::cout << "----------------------" << std::endl;
     Bureaucrat  master("Master", 150);

@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 22:08:58 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/08 08:59:50 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/08 15:50:26 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,28 @@
 
 PresidentialPardonForm::PresidentialPardonForm    ( void )
 {
-    std::cout << "PresidentialPardonForm Default Constructor" << std::endl;
+    // std::cout << "PresidentialPardonForm Default Constructor" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm ( std::string const& target ) : AForm(target, 25,5), _target(target)
 {
-    std::cout << "PresidentialPardonForm Parametrized Constructor" << std::endl;
+    // std::cout << "PresidentialPardonForm Parametrized Constructor" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm ( PresidentialPardonForm const& other )
 {
-    std::cout << "PresidentialPardonForm Copy Constructor" << std::endl;
+    // std::cout << "PresidentialPardonForm Copy Constructor" << std::endl;
     (*this) = other;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm ( void )
 {
-    std::cout << "PresidentialPardonForm Destructor" << std::endl;
+    // std::cout << "PresidentialPardonForm Destructor" << std::endl;
 }
 
 PresidentialPardonForm& PresidentialPardonForm::operator=( PresidentialPardonForm const& other )
 {
-    std::cout << "PresidentialPardonForm Copy Assignement Operator" << std::endl;
+    // std::cout << "PresidentialPardonForm Copy Assignement Operator" << std::endl;
     if (this != &other)
         this->_target = other._target;
     return (*this);

@@ -6,7 +6,7 @@
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 19:24:12 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/07 12:06:23 by aelkhali         ###   ########.fr       */
+/*   Updated: 2023/08/08 15:00:25 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,13 @@ void    testingConstuction ( void )
 {
     try
     {
-        Bureaucrat  bureaucrat("WrongBureacrat", 0);
+        Bureaucrat  bureaucrat("WrongBureacrat", 500);
         std::cout << bureaucrat;
     }
-    catch(Bureaucrat::GradeTooHighException e)
+    catch(std::exception& e)
     {
         std::cerr << "Exception: ";
         std::cerr << e.what() << std::endl;
-    }
-    catch(Bureaucrat::GradeTooLowException e)
-    {
-        std::cerr << "Exception: ";
-        std::cerr << e.what() << std::endl;
-    }
-    catch(...)
-    {
-        std::cerr << "Exception: SomeThing Else" << std::endl;
     }
 }
 
@@ -49,13 +40,9 @@ void    testingHighGradeIncrementations( void )
             std::cout << master;
         }
     }
-    catch(Bureaucrat::GradeTooHighException e)
+    catch(std::exception& e)
     {
         std::cerr << e.what() << std::endl;
-    }
-    catch(...)
-    {
-        std::cerr << "Exception: SomeThing Else" << std::endl;
     }
 }
 
@@ -73,13 +60,9 @@ void    testingLowGradeIncrementations( void )
             std::cout << iron;
         }
     }
-    catch(Bureaucrat::GradeTooLowException e)
+    catch(std::exception& e)
     {
         std::cerr << e.what() << std::endl;
-    }
-    catch(...)
-    {
-        std::cerr << "Exception: SomeThing Else" << std::endl;
     }
 }
 
