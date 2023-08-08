@@ -6,12 +6,12 @@
 #    By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/05 17:53:43 by aelkhali          #+#    #+#              #
-#    Updated: 2023/08/08 10:48:30 by aelkhali         ###   ########.fr        #
+#    Updated: 2023/08/08 12:08:55 by aelkhali         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #Output Program Name
-NAME = NoYouNeedForm28BNot28C
+NAME = AtLeastThisBeatsCoffeeMaking
 
 # Colors :
 GREEN = \033[0;32m
@@ -27,7 +27,7 @@ RM = rm -rf
 
 # loading source files :
 SRCS = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp \
-		RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+		RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp
 
 all : $(NAME)
 	@echo "You Can Use $(GREEN)*** $(NAME) ***$(STOP)"

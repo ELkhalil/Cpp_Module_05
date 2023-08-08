@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelkhali <aelkhali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/07 21:56:31 by aelkhali          #+#    #+#             */
-/*   Updated: 2023/08/08 10:42:59 by aelkhali         ###   ########.fr       */
+/*   Created: 2023/08/07 19:51:57 by aelkhali          #+#    #+#             */
+/*   Updated: 2023/08/07 21:14:13 by aelkhali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTOMYREQUESTFORM_HPP
-#define ROBOTOMYREQUESTFORM_HPP
+#ifndef SHRUBBERYCREATIONFORM_HPP
+#define SHRUBBERYCREATIONFORM_HPP
 
 #include "AForm.hpp"
+#include <fstream>
 
-class   RobotomyRequestForm : public AForm
+class   ShrubberyCreationForm : public AForm
 {
 public:
-    RobotomyRequestForm ( std::string const& target );
-    RobotomyRequestForm ( RobotomyRequestForm const& other );
-    ~RobotomyRequestForm ( void );
-    RobotomyRequestForm& operator=( RobotomyRequestForm const& other );
-    void    execute(Bureaucrat const & executor) const;
-
+    ShrubberyCreationForm   ( std::string const& target );
+    ShrubberyCreationForm   ( ShrubberyCreationForm const& other );
+    ~ShrubberyCreationForm  ( void );
+    ShrubberyCreationForm&  operator=( ShrubberyCreationForm const& other );
+    void                    execute (Bureaucrat const & executor) const;
+    
 private:
-    RobotomyRequestForm ( void );
+    ShrubberyCreationForm   ( void );
     std::string             _target;
-    static int              _count;
 };
-
 #endif
